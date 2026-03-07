@@ -1,16 +1,16 @@
-@if (airplanes.length === 0){ <p> Nincs repülőgép</p>
+@if (airplanes.length === 0){ <p> No planes</p>
 }@else {
 <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%; max-width: 600px;">
     <thead>
       <tr>
-        <th style="text-align: left;">Farkjelzés</th>
-        <th style="text-align: left;">Modell</th>
-        <th style="text-align: left;">Gyártó</th>
+        <th style="text-align: left;">Tail Number</th>
+        <th style="text-align: left;">Model</th>
+        <th style="text-align: left;">Manufacturer</th>
       </tr>
     </thead>
     <tbody>
         @for (plane of airplanes; track plane.id){
-        <tr>
+        <tr [ngClass]="{'maintenance-row': plane.status === 'maintenance'}">
           <td><a [routerLink]="['/airplanes', plane.id]" style="color: blue; text-decoration: underline; cursor: pointer;">
                 {{ plane.tailNumber | tailNumber }}
               </a>

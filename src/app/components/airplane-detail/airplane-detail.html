@@ -1,13 +1,19 @@
 @if (airplane) {
-  <p><strong>Farkjelzés:</strong> {{ airplane.tailNumber | tailNumber }}</p>
+  <p><strong>Tail Number:</strong> {{ airplane.tailNumber | tailNumber }}</p>
   <p><strong>Modell:</strong> {{ airplane.model }}</p>
-  <p><strong>Gyártó:</strong> {{ airplane.manufacturer }}</p>
-  <p><strong>Kapacitás:</strong> {{ airplane.capacity }} fő</p>
-  <p><strong>Státusz:</strong> {{ airplane.status }}</p>
-  
+  <p><strong>Manufacturer:</strong> {{ airplane.manufacturer }}</p>
+  <p><strong>Capacity:</strong> {{ airplane.capacity }} seats</p>
+  <p><strong>Status:</strong> {{ airplane.status }}</p>
+  <p><strong>Maintenance Status:</strong> {{ airplane.flightsSinceLastMaintenance }} / {{ airplane.maintenanceIntervalFlights }} flights</p>
+  <div class="progress-container">
+    <div class="progress-bar"
+         [style.width.%]="getMaintenancePercentage()"
+         [style.background-color]="getProgressBarColor()">
+    </div>
+  </div>
   <br>
-  <a routerLink="/airplanes">← Vissza a listához</a>
+  <a routerLink="/airplanes">← Back to list</a>
 
 } @else {
-  <a routerLink="/airplanes">← Vissza a listához</a>
+  <a routerLink="/airplanes">← Back to list</a>
 }

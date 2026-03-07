@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NgClass } from '@angular/common';
 import { AirplaneService } from '../../services/airplane';
 import { Airplane } from '../../models/airplane.model';
 import { TailNumberPipe } from '../../pipes/tail-number-pipe';
@@ -8,7 +9,7 @@ import { TailNumberPipe } from '../../pipes/tail-number-pipe';
 @Component({
   selector: 'app-airplane-list',
   standalone: true,
-  imports: [TailNumberPipe, RouterLink],
+  imports: [TailNumberPipe, RouterLink, NgClass],
   templateUrl: './airplane-list.html',
   styleUrl: './airplane-list.css',
 })
