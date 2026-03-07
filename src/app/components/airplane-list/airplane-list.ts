@@ -17,9 +17,21 @@ export class AirplaneListComponent implements OnInit {
 private airplaneService = inject(AirplaneService);
 
 airplanes: Airplane[] = [];
+isLoading = true; 
+errorMessage = '';
 
 ngOnInit(): void {
-    this.airplanes = this.airplaneService.getAirplanes();
+    this.airplaneService.getAirplanes().subscribe({
+      next: (data) => {
+          this.airplanes = data;
+          this.isLoading = false;
+      },
+      error: (error) => {
+        this.errorMessage = 'Failed to load';
+        this.isLoading = false;
+        console.error('API Error:', error);
+      }
+    })
 }
 
 

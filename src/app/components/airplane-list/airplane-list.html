@@ -3,10 +3,14 @@
     + New Plane
   </button>
 </div>
-
-@if (airplanes.length === 0){ <p> No planes</p>
-}@else {
-<table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%; max-width: 600px;">
+@if (isLoading) {
+  <p style="color: blue; font-weight: bold;">Loading...</p>
+} @else if (errorMessage) {
+  <p style="color: red; font-weight: bold;">{{ errorMessage }}</p>
+} @else if (airplanes.length === 0) {
+  <p>No planes</p>
+} @else {
+  <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%; max-width: 600px;">
     <thead>
       <tr>
         <th style="text-align: left;">Tail Number</th>
@@ -26,6 +30,6 @@
         </tr>
         }
     </tbody>
-    </table>
+  </table>
 }
 
