@@ -1,1 +1,24 @@
 <p>airplane-list works!</p>
+
+@if (airplanes.length === 0){ <p> Nincs repülőgép</p>
+}@else {
+<table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%; max-width: 600px;">
+    <thead>
+      <tr>
+        <th style="text-align: left;">Farkjelzés</th>
+        <th style="text-align: left;">Modell</th>
+        <th style="text-align: left;">Gyártó</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (plane of airplanes; track plane.id){
+        <tr>
+          <td>{{ plane.tailNumber }}</td>
+          <td>{{ plane.model }}</td>
+          <td>{{ plane.manufacturer }}</td>
+        </tr>
+        }
+    </tbody>
+    </table>
+}
+
