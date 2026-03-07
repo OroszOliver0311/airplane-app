@@ -27,7 +27,15 @@ export class AirplaneAddComponent {
   onSubmit() {
     if (this.airplaneForm.invalid) return;
     const newAirplane = this.airplaneForm.value as unknown as Airplane;
-    this.airplaneService.addAirplane(newAirplane);
-    this.router.navigate(['/airplanes']);
+    
+    this.airplaneService.addAirplane(newAirplane).subscribe({
+      next: () => {
+        this.router.navigate(['/airplanes']);
+      },
+      error: (err) => {
+        console.error('Error adding airplane:', err);
+        alert('Error adding airplane. Please try again.');
+      }
+    });
   }
 }

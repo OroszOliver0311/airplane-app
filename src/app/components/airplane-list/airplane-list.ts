@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { AirplaneService } from '../../services/airplane';
@@ -15,20 +15,22 @@ import { TailNumberPipe } from '../../pipes/tail-number-pipe';
 })
 export class AirplaneListComponent implements OnInit {
 private airplaneService = inject(AirplaneService);
-
+private cdr = inject(ChangeDetectorRef);
 airplanes: Airplane[] = [];
 isLoading = true; 
 errorMessage = '';
 
 ngOnInit(): void {
-    this.airplaneService.getAirplanes().subscribe({
-      next: (data) => {
-          this.airplanes = data;
-          this.isLoading = false;
+  this.airplaneService.getAirplanes().subscribe({
+      next: (data) => { 
+        this.airplanes = data;
+        this.isLoading = false;
+        this.cdr.detectChanges();
       },
       error: (error) => {
         this.errorMessage = 'Failed to load';
         this.isLoading = false;
+        this.cdr.detectChanges();
         console.error('API Error:', error);
       }
     })

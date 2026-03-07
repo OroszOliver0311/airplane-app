@@ -3,13 +3,22 @@
     + New Plane
   </button>
 </div>
+<div style="background: #eee; padding: 10px; margin-bottom: 10px; font-family: monospace;">
+  DEBUG: isLoading = {{ isLoading }}, Repülők száma = {{ airplanes.length }}
+</div>
+
 @if (isLoading) {
   <p style="color: blue; font-weight: bold;">Loading...</p>
-} @else if (errorMessage) {
+} 
+
+@if (!isLoading && errorMessage) {
   <p style="color: red; font-weight: bold;">{{ errorMessage }}</p>
-} @else if (airplanes.length === 0) {
+} 
+
+@if (!isLoading && !errorMessage && airplanes.length === 0) {
   <p>No planes</p>
-} @else {
+} 
+@if(!isLoading && !errorMessage && airplanes.length > 0) {
   <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%; max-width: 600px;">
     <thead>
       <tr>
