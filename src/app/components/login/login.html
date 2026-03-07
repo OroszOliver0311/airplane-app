@@ -1,0 +1,24 @@
+<div style="max-width: 300px; margin: 50px auto; padding: 20px; border: 1px solid lightgrey; border-radius: 8px;">
+  <h2>Login</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="display: flex; flex-direction: column; gap: 15px;">
+    
+    <div>
+      <label>Email:</label><br>
+      <input type="email" formControlName="email" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div>
+      <label>Password:</label><br>
+      <input type="password" formControlName="password" style="width: 100%; padding: 8px;">
+    </div>
+
+    @if (errorMessage) {
+      <div style="color: red; font-size: 14px;">{{ errorMessage }}</div>
+    }
+
+    <button type="submit" [disabled]="loginForm.invalid" style="padding: 10px; background-color: green; color: white; border: none; cursor: pointer;">
+      Login
+    </button>
+  </form>
+</div>
