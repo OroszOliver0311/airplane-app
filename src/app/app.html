@@ -1,1 +1,11 @@
+<div style="background-color: #333; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;">
+  <h2 style="margin: 0;">✈️ Airline Manager</h2>
+
+  @if (authService.isLoggedIn()) {
+    <button (click)="logout()" style="background-color: red; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 4px;">
+     Logout
+    </button>
+  }
+</div>
+
 <router-outlet></router-outlet>
