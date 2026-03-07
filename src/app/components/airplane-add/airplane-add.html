@@ -1,0 +1,40 @@
+<form [formGroup]="airplaneForm" (ngSubmit)="onSubmit()" style="max-width: 400px; display: flex; flex-direction: column; gap: 10px;">
+  
+  <div>
+    <label>Tail Number:</label><br>
+    <input type="text" formControlName="tailNumber">
+  </div>
+
+  <div>
+    <label>Model:</label><br>
+    <input type="text" formControlName="model">
+  </div>
+
+  <div>
+    <label>Manufacturer:</label><br>
+    <input type="text" formControlName="manufacturer">
+  </div>
+
+  <div>
+    <label>Capacity (seats):</label><br>
+    <input type="number" formControlName="capacity">
+  </div>
+
+  <div>
+    <label>Maintenance Interval (flights):</label><br>
+    <input type="number" formControlName="maintenanceIntervalFlights">
+  </div>
+
+  <div>
+    <label>FLight since last maintenance:</label><br>
+    <input type="number" formControlName="flightsSinceLastMaintenance">
+  </div>
+
+  <div style="margin-top: 15px;">
+    <button type="submit" style="padding: 10px 15px; background-color: #2196f3; color: white; border: none; cursor: pointer; margin-right: 10px;">
+      Save
+    </button>
+    <a routerLink="/airplanes">Cancel</a>
+  </div>
+
+</form>

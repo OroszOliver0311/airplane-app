@@ -11,6 +11,11 @@ private airplanes : Airplane[] =[
   { id: '2', tailNumber: 'N67890', model: 'A320', manufacturer: 'Airbus', capacity: 180, status: 'active', maintenanceIntervalFlights: 100, flightsSinceLastMaintenance: 92 },
   { id: '3', tailNumber: 'N11111', model: '787-9', manufacturer: 'Boeing', capacity: 296, status: 'maintenance', maintenanceIntervalFlights: 100, flightsSinceLastMaintenance: 100 },
 ]
+addAirplane(airplane: Airplane): void {
+  airplane.id = Date.now().toString();
+  this.airplanes.push(airplane);
+}
+
 getAirplanes(): Airplane[] {
 
   return this.airplanes;
