@@ -1,0 +1,13 @@
+@if (airplane) {
+  <p><strong>Farkjelzés:</strong> {{ airplane.tailNumber | tailNumber }}</p>
+  <p><strong>Modell:</strong> {{ airplane.model }}</p>
+  <p><strong>Gyártó:</strong> {{ airplane.manufacturer }}</p>
+  <p><strong>Kapacitás:</strong> {{ airplane.capacity }} fő</p>
+  <p><strong>Státusz:</strong> {{ airplane.status }}</p>
+  
+  <br>
+  <a routerLink="/airplanes">← Vissza a listához</a>
+
+} @else {
+  <a routerLink="/airplanes">← Vissza a listához</a>
+}

@@ -16,4 +16,9 @@ getAirplanes(): Airplane[] {
   return this.airplanes;
 }
 
+getById(id: string): Airplane | undefined{
+  return this.airplanes.find(p => p.id === id);
+}
+
+
 }
