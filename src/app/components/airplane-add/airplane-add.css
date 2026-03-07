@@ -1,0 +1,11 @@
+.error-msg {
+  color: red;
+  font-size: 12px;
+  margin-top: 2px;
+  display: block;
+}
+
+button:disabled {
+  background-color: lightgray !important;
+  cursor: not-allowed !important;
+}
