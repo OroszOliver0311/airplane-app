@@ -25,7 +25,9 @@ addAirplane(airplane: Airplane): void {
   airplane.id = Date.now().toString();
   this.airplanes.push(airplane);
 }*/
-
+incrementFlights(id: string): Observable<Airplane> {
+    return this.http.post<Airplane>(`${this.apiUrl}/${id}/increment-flights`, {});
+  }
 
 getById(id: string): Observable<Airplane>{
   return this.http.get<Airplane>(`${this.apiUrl}/${id}`);

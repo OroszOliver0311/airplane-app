@@ -40,13 +40,19 @@ ngOnInit(): void {
     }
   }
 onFlightAdded(): void {
-    if (this.airplane) {
-      this.airplane.flightsSinceLastMaintenance++;
-      
-      if (this.airplane.flightsSinceLastMaintenance >= this.airplane.maintenanceIntervalFlights) {
-        this.airplane.status = 'maintenance';
-      }
+    if (this.airplane && this.airplane.id) {
+      this.airplaneService.incrementFlights(this.airplane.id).subscribe({
+        
+        next: (updatedAirplane) => {
+          this.airplane = updatedAirplane;
+        },
+        
+        error: (err) => {
+          console.error('Error', err);
+          alert('Error adding flight. Please try again.');
+        }
+        
+      });
     }
   }
 }
-
