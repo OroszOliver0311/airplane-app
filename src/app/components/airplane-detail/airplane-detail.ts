@@ -3,11 +3,11 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AirplaneService } from '../../services/airplane';
 import { Airplane } from '../../models/airplane.model';
 import { TailNumberPipe } from '../../pipes/tail-number-pipe';
-
+import { MaintenanceStatusBarComponent } from '../maintenance-status-bar/maintenance-status-bar';
 @Component({
   selector: 'app-airplane-detail',
   standalone: true,
-  imports: [RouterLink, TailNumberPipe],
+  imports: [RouterLink, TailNumberPipe, MaintenanceStatusBarComponent],
   templateUrl: './airplane-detail.html',
   styleUrl: './airplane-detail.css',
 })
@@ -24,17 +24,14 @@ ngOnInit(): void {
       this.airplane = this.airplaneService.getById(id);
     }
   }
-getMaintenancePercentage() : number{
-  if(!this.airplane) return 0;
-  const percentage = this.airplane.flightsSinceLastMaintenance / this.airplane.maintenanceIntervalFlights;
-  return Math.min(percentage*100, 100);
+onFlightAdded(): void {
+    if (this.airplane) {
+      this.airplane.flightsSinceLastMaintenance++;
+      
+      if (this.airplane.flightsSinceLastMaintenance >= this.airplane.maintenanceIntervalFlights) {
+        this.airplane.status = 'maintenance';
+      }
+    }
+  }
 }
 
-getProgressBarColor(): string{
-  const percentage = this.getMaintenancePercentage();
-  if(percentage == 100) return '#f44336';
-  if (percentage >= 75) return '#ff9800';  
-    return '#4caf50';
-}
-
-}

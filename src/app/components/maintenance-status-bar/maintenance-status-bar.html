@@ -1,0 +1,12 @@
+<p><strong>Maintenance Status:</strong> {{ currentFlights }} / {{ interval }} flights</p>
+
+<div class="progress-container">
+  <div class="progress-bar"
+       [style.width.%]="getPercentage()"
+       [style.background-color]="getColor()">
+  </div>
+</div>
+
+<button (click)="onAddClick()" [disabled]="currentFlights >= interval || status === 'maintenance'">
+  Add flight
+</button>

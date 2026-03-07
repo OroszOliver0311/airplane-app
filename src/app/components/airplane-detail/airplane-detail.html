@@ -5,12 +5,12 @@
   <p><strong>Capacity:</strong> {{ airplane.capacity }} seats</p>
   <p><strong>Status:</strong> {{ airplane.status }}</p>
   <p><strong>Maintenance Status:</strong> {{ airplane.flightsSinceLastMaintenance }} / {{ airplane.maintenanceIntervalFlights }} flights</p>
-  <div class="progress-container">
-    <div class="progress-bar"
-         [style.width.%]="getMaintenancePercentage()"
-         [style.background-color]="getProgressBarColor()">
-    </div>
-  </div>
+  <app-maintenance-status-bar 
+    [interval]="airplane.maintenanceIntervalFlights"
+    [currentFlights]="airplane.flightsSinceLastMaintenance"
+    [status]="airplane.status"
+    (flightAdded)="onFlightAdded()">
+  </app-maintenance-status-bar>
   <br>
   <a routerLink="/airplanes">← Back to list</a>
 
