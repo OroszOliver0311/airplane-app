@@ -24,12 +24,12 @@ getAirplanes(): Observable<Airplane[]> {
 addAirplane(airplane: Airplane): void {
   airplane.id = Date.now().toString();
   this.airplanes.push(airplane);
-}
-
-
-getById(id: string): Airplane | undefined{
-  return this.airplanes.find(p => p.id === id);
 }*/
+
+
+getById(id: string): Observable<Airplane>{
+  return this.http.get<Airplane>(`${this.apiUrl}/${id}`);
+}
 
 
 }

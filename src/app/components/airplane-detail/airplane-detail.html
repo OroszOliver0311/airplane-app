@@ -1,4 +1,11 @@
-@if (airplane) {
+@if (isLoading) {
+  <p style="color: blue; font-weight: bold;">Loading...</p>
+} 
+@else if (errorMessage) {
+  <p style="color: red; font-weight: bold;">{{ errorMessage }}</p>
+  <a routerLink="/airplanes">← Back to list</a>
+} 
+@else if (airplane) {
   <p><strong>Tail Number:</strong> {{ airplane.tailNumber | tailNumber }}</p>
   <p><strong>Modell:</strong> {{ airplane.model }}</p>
   <p><strong>Manufacturer:</strong> {{ airplane.manufacturer }}</p>
