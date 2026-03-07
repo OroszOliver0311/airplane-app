@@ -1,11 +1,11 @@
 @if (isLoading) {
   <p style="color: blue; font-weight: bold;">Loading...</p>
 } 
-@else if (errorMessage) {
+@if (errorMessage) {
   <p style="color: red; font-weight: bold;">{{ errorMessage }}</p>
   <a routerLink="/airplanes">← Back to list</a>
 } 
-@else if (airplane) {
+@if (airplane) {
   <p><strong>Tail Number:</strong> {{ airplane.tailNumber | tailNumber }}</p>
   <p><strong>Modell:</strong> {{ airplane.model }}</p>
   <p><strong>Manufacturer:</strong> {{ airplane.manufacturer }}</p>
@@ -19,6 +19,11 @@
     (flightAdded)="onFlightAdded()">
   </app-maintenance-status-bar>
   <br>
+  <div style="margin-top: 20px; margin-bottom: 20px;">
+    <button [routerLink]="['/airplanes', airplane.id, 'edit']" style="padding: 8px 15px; background-color: #ff9800; color: white; border: none; cursor: pointer;">
+      Edit
+    </button>
+  </div>
   <a routerLink="/airplanes">← Back to list</a>
 
 } @else {

@@ -9,6 +9,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'airplanes', component: AirplaneListComponent,canActivate: [authGuard] },
   { path: 'airplanes/new', component: AirplaneAddComponent,canActivate: [authGuard] },
+  { path: 'airplanes/:id/edit', component: AirplaneAddComponent, canActivate: [authGuard] },
   { path: 'airplanes/:id', component: AirplaneDetailComponent,canActivate: [authGuard] },
   
 

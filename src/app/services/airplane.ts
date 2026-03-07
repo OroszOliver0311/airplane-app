@@ -31,6 +31,7 @@ incrementFlights(id: string): Observable<Airplane> {
 getById(id: string): Observable<Airplane>{
   return this.http.get<Airplane>(`${this.apiUrl}/${id}`);
 }
-
-
+updateAirplane(id: string, airplane: Airplane): Observable<Airplane> {
+  return this.http.put<Airplane>(`${this.apiUrl}/${id}`, airplane);
+}
 }

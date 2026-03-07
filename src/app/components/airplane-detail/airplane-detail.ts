@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AirplaneService } from '../../services/airplane';
 import { Airplane } from '../../models/airplane.model';
@@ -14,6 +14,8 @@ import { MaintenanceStatusBarComponent } from '../maintenance-status-bar/mainten
 export class AirplaneDetailComponent {
   private route = inject(ActivatedRoute);
   private airplaneService = inject(AirplaneService);
+  private cdr = inject(ChangeDetectorRef);
+
   airplane: Airplane | undefined;
   isLoading = true;
   errorMessage = '';
@@ -27,10 +29,12 @@ ngOnInit(): void {
         next: (data) => {
           this.airplane = data;
           this.isLoading = false;
+          this.cdr.detectChanges();
         },
         error: (err) => {
           this.errorMessage = 'Cant Load Data.';
           this.isLoading = false;
+          this.cdr.detectChanges();
           console.error('API Error:', err);
         }
       });
@@ -45,6 +49,7 @@ onFlightAdded(): void {
         
         next: (updatedAirplane) => {
           this.airplane = updatedAirplane;
+          this.cdr.detectChanges();
         },
         
         error: (err) => {

@@ -29,7 +29,7 @@
     </thead>
     <tbody>
         @for (plane of airplanes; track plane.id){
-        <tr [ngClass]="{'maintenance-row': plane.status === 'maintenance'}">
+        <tr [ngClass]="{'maintenance-row': plane.status === 'maintenance' || plane.flightsSinceLastMaintenance >= plane.maintenanceIntervalFlights}">
           <td><a [routerLink]="['/airplanes', plane.id]" style="color: blue; text-decoration: underline; cursor: pointer;">
                 {{ plane.tailNumber | tailNumber }}
               </a>
