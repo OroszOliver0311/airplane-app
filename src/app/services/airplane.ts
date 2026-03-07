@@ -34,4 +34,10 @@ getById(id: string): Observable<Airplane>{
 updateAirplane(id: string, airplane: Airplane): Observable<Airplane> {
   return this.http.put<Airplane>(`${this.apiUrl}/${id}`, airplane);
 }
+
+deleteAirplane(id: string): Observable<any> {
+  return this.http.delete(`${this.apiUrl}/${id}`);
+}
+
+
 }

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { AirplaneService } from '../../services/airplane';
 import { Airplane } from '../../models/airplane.model';
 import { TailNumberPipe } from '../../pipes/tail-number-pipe';
@@ -15,6 +15,7 @@ export class AirplaneDetailComponent {
   private route = inject(ActivatedRoute);
   private airplaneService = inject(AirplaneService);
   private cdr = inject(ChangeDetectorRef);
+  private router = inject(Router);
 
   airplane: Airplane | undefined;
   isLoading = true;
@@ -60,4 +61,27 @@ onFlightAdded(): void {
       });
     }
   }
+  onDelete(): void {
+    
+    if (this.airplane && this.airplane.id) {
+
+      const confirmed = window.confirm('Are you sure you want to delete this airplane? This action cannot be undone.');
+      if (confirmed) {
+        this.airplaneService.deleteAirplane(this.airplane.id).subscribe({
+          next: () => {
+            this.router.navigate(['/airplanes']);
+          },
+          error: (err) => {
+            console.error('Error deleting airplane:', err);
+            alert('Failed to delete the airplane from the server.');
+          }
+        });
+      }
+    }
+  }
+
+
+
+
 }
+

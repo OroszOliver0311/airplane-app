@@ -20,8 +20,11 @@
   </app-maintenance-status-bar>
   <br>
   <div style="margin-top: 20px; margin-bottom: 20px;">
-    <button [routerLink]="['/airplanes', airplane.id, 'edit']" style="padding: 8px 15px; background-color: #ff9800; color: white; border: none; cursor: pointer;">
+    <button [routerLink]="['/airplanes', airplane.id, 'edit']" style="padding: 8px 15px; background-color: orange; color: white; border: none; cursor: pointer;">
       Edit
+    </button>
+    <button (click)="onDelete()" style="padding: 8px 15px; background-color: red; color: white; border: none; cursor: pointer;">
+      Delete
     </button>
   </div>
   <a routerLink="/airplanes">← Back to list</a>
