@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MaintenanceStatusBar } from './maintenance-status-bar';
+import { MaintenanceStatusBarComponent } from './maintenance-status-bar';
 
 describe('MaintenanceStatusBar', () => {
-  let component: MaintenanceStatusBar;
-  let fixture: ComponentFixture<MaintenanceStatusBar>;
+  let component: MaintenanceStatusBarComponent;
+  let fixture: ComponentFixture<MaintenanceStatusBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MaintenanceStatusBar],
+      imports: [MaintenanceStatusBarComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MaintenanceStatusBar);
+    fixture = TestBed.createComponent(MaintenanceStatusBarComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
