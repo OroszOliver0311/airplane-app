@@ -1,7 +1,5 @@
 # Airplane API (Backend)
 
-Express server with mock data and JWT auth for the Angular junior test (Tasks 8–16).
-
 ## Install and run
 
 ```bash
