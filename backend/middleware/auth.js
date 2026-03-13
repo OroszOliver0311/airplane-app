@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'airplane-junior-test-secret-change-in-production';
+const JWT_SECRET = process.env.JWT_SECRET || 'airplane-secret-change-in-production';
 
 /**
  * Express middleware that verifies the JWT in the Authorization header.
